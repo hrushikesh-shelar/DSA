@@ -5,7 +5,7 @@ public:
         map<char, int> mp;
         
         for(int i=0; i<s.size(); i++) {
-            cout<<"Map:"<<endl;
+            // cout<<"Map:"<<endl;
             // for(auto x:mp) {
             //     cout<<
             // }
@@ -21,7 +21,7 @@ public:
             mp[s[i]]++;
             end = i;
             res = max(res, end-beg+1);
-            cout<<"beg:"<<beg<<" end:"<<end<<" res:"<<res<<endl;
+            // cout<<"beg:"<<beg<<" end:"<<end<<" res:"<<res<<endl;
         }
         return res;
     }
