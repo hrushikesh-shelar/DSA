@@ -2,7 +2,7 @@ class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         int res = 0, beg = 0, end = 0;
-        map<char, int> mp;
+        unordered_map<char, int> mp;
         
         for(int i=0; i<s.size(); i++) {
             // cout<<"Map:"<<endl;
