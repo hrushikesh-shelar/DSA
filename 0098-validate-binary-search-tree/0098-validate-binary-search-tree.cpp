@@ -15,7 +15,6 @@ public:
         if(!root) {
             return true;
         }
-        cout<<root->val<<" "<<minLimit<<" "<<maxLimit<<endl;
         if((long)root->val < minLimit or (long) root->val > maxLimit) {
             return false;
         }
