@@ -11,26 +11,19 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode* p, TreeNode* q, bool& ans) {
+    bool inorder(TreeNode* p, TreeNode* q) {
         if(!((p and q) or (!p and !q))) {
-            ans = false;
-            return;
+            return false;
         }
         if(!p and !q) {
-            return;
+            return true;
         }
         
-        inorder(p->left, q->left, ans);
+        return (p->val == q->val) and inorder(p->left, q->left) and inorder(p->right, q->right);
         
-        if(p->val != q->val)
-            ans = false;
-        
-        inorder(p->right, q->right, ans);
         
     };
     bool isSameTree(TreeNode* p, TreeNode* q) {
-        bool ans = true;
-        inorder(p, q, ans);
-        return ans;
+        return inorder(p, q);
     }
 };
