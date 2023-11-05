@@ -38,7 +38,6 @@ class Solution {
             if(t.next!=null){
                 pq.add(t.next);
             }
-            System.out.println(t.val);
         }
         return ans.next;
     }
