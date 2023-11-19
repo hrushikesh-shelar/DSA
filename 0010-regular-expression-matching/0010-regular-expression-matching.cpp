@@ -18,12 +18,8 @@ class Solution {
         
         if ((pi+1)<p.size() && p[pi+1]=='*') {
             return memo[si][pi] = isMatchHelper(s, p, si, pi+2, memo) or (match and isMatchHelper(s, p, si+1, pi, memo));
-        } else if (match) {
-            return memo[si][pi] = isMatchHelper(s, p, si+1, pi+1, memo);
-        }
-        
-        return memo[si][pi] = false;
-        
+        } 
+        return memo[si][pi] = (match && isMatchHelper(s, p, si+1, pi+1, memo));
     }
 public:
     bool isMatch(string s, string p) {
