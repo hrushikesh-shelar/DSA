@@ -5,7 +5,7 @@ public:
         while(n) {
             // cout<<n<<endl;
             res+=n&1;
-            n/=2;
+            n=n>>1;
         }
         return res;
     }
