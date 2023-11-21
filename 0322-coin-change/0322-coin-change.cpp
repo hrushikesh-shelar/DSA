@@ -20,10 +20,10 @@ class Solution {
     }
 public:
     int coinChange(vector<int>& coins, int amount) {
-        if(amount<1) return 0;
     
         sort(coins.rbegin(), coins.rend());
         vector<int> dp(amount+1, -1);
+        dp[0]=0;
         
         coinChangeRec(coins, amount, dp);
         
