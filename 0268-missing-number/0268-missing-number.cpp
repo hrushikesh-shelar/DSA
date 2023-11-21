@@ -2,18 +2,10 @@ class Solution {
 public:
     int missingNumber(vector<int>& nums) {
         int n = nums.size();
+        long long int totalSum = 0;
         for(int i=0; i<n; i++) {
-            if(nums[i]<n) nums[nums[i]] += (n+1);
-            else if(nums[i]>=(n+1) && nums[i]<(2*n+1)) nums[nums[i]-n-1] += (n+1);
+            totalSum += nums[i];
         }
-        // for(auto x: nums) {
-        //     cout<<x<<" ";
-        // }
-        for(int i=0; i<n; i++) {
-            if(nums[i] < (n+1)) {
-                return i; 
-            }
-        }
-        return n;
+        return (int) (n*(n+1)/2 - totalSum);
     }
 };
