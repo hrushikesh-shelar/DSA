@@ -17,7 +17,7 @@ class Solution {
         if(currTime>maxTime){
             maxTime = currTime;
         }
-        cout<<root->val<<" "<<currTime<<" "<<maxTime<<endl;
+        // cout<<root->val<<" "<<currTime<<" "<<maxTime<<endl;
         traverseChildNodes(root->left, maxTime, currTime+1);
         traverseChildNodes(root->right, maxTime, currTime+1);
     }
@@ -37,7 +37,7 @@ class Solution {
             if(dl+1>maxTime){
                 maxTime = dl+1;
             }
-            cout<<"left: "<<root->val<<" "<<dl+1<<" "<<maxTime<<endl;
+            // cout<<"left: "<<root->val<<" "<<dl+1<<" "<<maxTime<<endl;
             traverseChildNodes(root->right, maxTime, dl+2);
             return dl+1;
         }
@@ -47,7 +47,7 @@ class Solution {
             if(dr+1>maxTime){
                 maxTime = dr+1;
             }
-            cout<<"right:"<<root->val<<" "<<dr+1<<" "<<maxTime<<endl;
+            // cout<<"right:"<<root->val<<" "<<dr+1<<" "<<maxTime<<endl;
             traverseChildNodes(root->left, maxTime, dr+2);
             return dr+1;
         }
