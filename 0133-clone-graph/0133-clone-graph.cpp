@@ -20,31 +20,32 @@ public:
 */
 
 class Solution {
+    map<Node*, bool> visitedMap;
 public:
     Node* cloneGraph(Node* node) {
-        if (!node) return nullptr;
-
-        unordered_map<Node*, Node*> visited;
-        Node* copy = new Node(node->val);
-        visited[node] = copy;
+        if(node == nullptr) return nullptr;
         
-        queue<Node*> q;
-        q.push(node);
-
-        while (!q.empty()) {
-            Node* curr = q.front();
-            q.pop();
-
-            for (Node* neighbor : curr->neighbors) {
-                if (!visited.count(neighbor)) {
-                    visited[neighbor] = new Node(neighbor->val);
-                    q.push(neighbor);
+        unordered_map<Node*, Node*> originalNodeToClonedNodeMap;
+        Node* clonedNode = new Node(node->val);
+        originalNodeToClonedNodeMap[node] = clonedNode;
+        
+        queue<Node*> bfsQueue;
+        bfsQueue.push(node);
+        
+        while(!bfsQueue.empty()) {
+            Node* currOriginalNode = bfsQueue.front();
+            bfsQueue.pop();
+            
+            for(Node* neighborOriginalNode: currOriginalNode->neighbors) {
+                if(!originalNodeToClonedNodeMap.count(neighborOriginalNode)) {
+                    Node* clonedNeighborNode = new Node(neighborOriginalNode->val);
+                    bfsQueue.push(neighborOriginalNode);
+                    originalNodeToClonedNodeMap[neighborOriginalNode] = clonedNeighborNode;
                 }
-                
-                visited[curr]->neighbors.push_back(visited[neighbor]);
+                originalNodeToClonedNodeMap[currOriginalNode]->neighbors.push_back(originalNodeToClonedNodeMap[neighborOriginalNode]);
             }
+            
         }
-
-        return copy;
+        return clonedNode;
     }
 };
