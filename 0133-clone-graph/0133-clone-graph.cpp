@@ -20,32 +20,28 @@ public:
 */
 
 class Solution {
-    map<Node*, bool> visitedMap;
 public:
     Node* cloneGraph(Node* node) {
-        if(node == nullptr) return nullptr;
-        
-        unordered_map<Node*, Node*> originalNodeToClonedNodeMap;
-        Node* clonedNode = new Node(node->val);
-        originalNodeToClonedNodeMap[node] = clonedNode;
-        
-        queue<Node*> bfsQueue;
-        bfsQueue.push(node);
-        
-        while(!bfsQueue.empty()) {
-            Node* currOriginalNode = bfsQueue.front();
-            bfsQueue.pop();
-            
-            for(Node* neighborOriginalNode: currOriginalNode->neighbors) {
-                if(!originalNodeToClonedNodeMap.count(neighborOriginalNode)) {
-                    Node* clonedNeighborNode = new Node(neighborOriginalNode->val);
-                    bfsQueue.push(neighborOriginalNode);
-                    originalNodeToClonedNodeMap[neighborOriginalNode] = clonedNeighborNode;
-                }
-                originalNodeToClonedNodeMap[currOriginalNode]->neighbors.push_back(originalNodeToClonedNodeMap[neighborOriginalNode]);
-            }
-            
+        if(node==nullptr) {
+            return nullptr;
         }
-        return clonedNode;
+        map<Node*, Node*> originalToCopyNode;
+        originalToCopyNode[node] = new Node(node->val);
+        queue<Node*> bfs;
+        bfs.push(node);
+        
+        while(!bfs.empty()) {
+            Node* curr = bfs.front();
+            bfs.pop();
+            
+            for(Node* neighbor: curr->neighbors) {
+                if(originalToCopyNode.find(neighbor)==originalToCopyNode.end()) {
+                    originalToCopyNode[neighbor] = new Node(neighbor->val);
+                    bfs.push(neighbor);
+                }
+                originalToCopyNode[curr]->neighbors.push_back(originalToCopyNode[neighbor]);
+            }
+        }
+        return originalToCopyNode[node];
     }
 };
