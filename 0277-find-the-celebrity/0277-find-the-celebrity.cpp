@@ -6,7 +6,7 @@ public:
     int findCelebrity(int n) {
         int celeb = 0;
         for(int i=1; i<n; i++) {
-            if(!knows(i, celeb) and knows(celeb, i)) {
+            if(knows(celeb, i)) {
                 celeb = i;
             }
         }
