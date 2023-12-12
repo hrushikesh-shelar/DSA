@@ -8,8 +8,11 @@ public:
         if(jug == target)
             return true;
         bool a = dfs(total, jug1, jug2, jug+jug1, target, vis);
+        if(a) return true;
         bool b = dfs(total, jug1, jug2, jug-jug1, target, vis);
+        if(b) return true;
         bool c = dfs(total, jug1, jug2, jug+jug2, target, vis);
+        if(c) return true;
         bool d = dfs(total, jug1, jug2, jug-jug2, target, vis);
         return a||b||c||d;
     }
