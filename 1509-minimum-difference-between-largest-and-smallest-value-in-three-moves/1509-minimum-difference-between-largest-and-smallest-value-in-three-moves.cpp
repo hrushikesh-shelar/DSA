@@ -1,29 +1,20 @@
 class Solution {
 public:
     int minDifference(vector<int>& nums) {
-        if(nums.size()<=4) {
+        sort(nums.begin(),nums.end());
+        int n=nums.size();
+        if(n<=4){
             return 0;
         }
-        priority_queue<int> descending;
-        priority_queue<int, vector<int>, greater<int>> ascending;
-        
-        for(auto x: nums) {
-            descending.push(x); ascending.push(x);
-        }
-        vector<int> large;
-        int counter = 4;
-        while(counter--) {
-            large.push_back(descending.top());
-            descending.pop();
-        }
-        int minDiff = INT_MAX;
-        counter = 4;
-        while(counter) {
-            minDiff = min(minDiff, large[counter-1]-ascending.top());
-            ascending.pop();
-            counter--;
-        }
-        return minDiff;
+        //1st
+        int res=nums[n-1]-nums[3];
+        //2nd
+        res=min(res,nums[n-4]-nums[0]);
+        //3rd
+        res=min(res,nums[n-2]-nums[2]);
+        //4th
+        res=min(res,nums[n-3]-nums[1]);
+        return res;
     }
 };
 
