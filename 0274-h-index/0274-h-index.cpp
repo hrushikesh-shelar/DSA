@@ -1,10 +1,10 @@
 class Solution {
 public:
     int hIndex(vector<int>& citations) {
-        sort(citations.begin(), citations.end());
+        sort(citations.rbegin(), citations.rend());
         int n = citations.size();
         int i = 0;
-        while (i < n && citations[n - 1 - i] > i) {
+        while (i < n && citations[i] > i) {
             i++;
         }
         return i;
