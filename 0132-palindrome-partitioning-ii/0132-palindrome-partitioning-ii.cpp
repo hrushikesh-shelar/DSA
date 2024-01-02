@@ -12,7 +12,6 @@ public:
     int solve (string & s, int i, int j, vector<int> & dp){    
         if(i>=j or isPalindrome(s, i, j)) return 0;
         if(dp[i]!=-1) return dp[i];
-        
         int ans = INT_MAX;
         for(int k=i; k<j; k++){        
             if(isPalindrome(s, i, k)){                         
