@@ -31,7 +31,6 @@ public:
             curr = curr->next;
         }
         lesser->next = greaterHead->next;
-        ListNode* res = lesserHead->next;
-        return res;
+        return lesserHead->next;
     }
 };
