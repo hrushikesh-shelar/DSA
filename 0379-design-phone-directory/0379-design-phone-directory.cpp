@@ -1,6 +1,6 @@
 class PhoneDirectory {
     // Hash set to store all available slots.
-    set<int> slotsAvailable;
+    unordered_set<int> slotsAvailable;
 
 public:
     PhoneDirectory(int maxNumbers) {
