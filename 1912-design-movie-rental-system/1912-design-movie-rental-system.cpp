@@ -60,13 +60,7 @@
 //  */
 
 
-
-
-class MovieRentingSystem
-{
-public:
-    struct PriceShop
-    {
+struct PriceShop {
         int price;
         int shop;
 
@@ -79,8 +73,7 @@ public:
             return false;
         };
     };
-    struct Info
-    { // 0,1,3 < 0,4,3 
+struct Info { // 0,1,3 < 0,4,3 
         int shop;
         int movie;
         int price;
@@ -94,6 +87,9 @@ public:
         };
     };
 
+class MovieRentingSystem
+{
+public:
     // movie -> Set<Price & Shop>(5)
     unordered_map<int, set<PriceShop>> unrented;
    
