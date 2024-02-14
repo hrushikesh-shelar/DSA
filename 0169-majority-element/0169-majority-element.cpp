@@ -4,7 +4,7 @@ public:
         int majorityEle = nums[0];
         int cnt=1;
         for(int i=1; i<nums.size(); i++) {
-            cout<<"majorityEle:"<<majorityEle<<"  count:"<<cnt<<endl;
+            // cout<<"majorityEle:"<<majorityEle<<"  count:"<<cnt<<endl;
             if(nums[i]==majorityEle) {
                 cnt++;
             } else {
