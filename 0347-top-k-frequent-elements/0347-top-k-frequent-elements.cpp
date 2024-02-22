@@ -7,13 +7,16 @@ public:
         }
         
         vector<int> res;
-        priority_queue<pair<int,int>> pq; 
+        priority_queue<pair<int,int>, vector<pair<int, int>>, greater<pair<int, int>>> pq; 
         for(auto it = map.begin(); it != map.end(); it++){
             pq.push(make_pair(it->second, it->first));
-            if(pq.size() > (int)map.size() - k){
-                res.push_back(pq.top().second);
+            if(pq.size() > k){
                 pq.pop();
             }
+        }
+        while(!pq.empty()) {
+            res.push_back(pq.top().second);
+            pq.pop();
         }
         return res;
     }
