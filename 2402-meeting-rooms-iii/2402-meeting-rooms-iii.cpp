@@ -30,13 +30,13 @@ public:
             }
         }
 
-        int maxMeetingCount = 0, maxMeetingCountRoom = 0;
-        for (int i = 0; i < n; i++) {
-            if (meetingCount[i] > maxMeetingCount) {
-                maxMeetingCount = meetingCount[i];
-                maxMeetingCountRoom = i;
-            }
-        }
-        return maxMeetingCountRoom;
+        // int maxMeetingCount = 0, maxMeetingCountRoom = 0;
+        // for (int i = 0; i < n; i++) {
+        //     if (meetingCount[i] > maxMeetingCount) {
+        //         maxMeetingCount = meetingCount[i];
+        //         maxMeetingCountRoom = i;
+        //     }
+        // }
+        return (max_element(meetingCount.begin(), meetingCount.end()) - meetingCount.begin());
     }
 };
